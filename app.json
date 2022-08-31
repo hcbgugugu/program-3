@@ -1,10 +1,6 @@
 {
     "pages": [
         "pages/home/home",
-        "pages/template/home",
-        "pages/custom/home",
-        "pages/test/home",
-        "pages/my/home",
         "pages/document/system/system",
         "pages/document/theme/theme",
         "pages/document/navbar/navbar",
@@ -112,44 +108,6 @@
         "ui-checkbox-group" : "/mp-cu/colorUI/components/ui-checkbox-group/ui-checkbox-group",
         "ui-change-theme": "/mp-cu/colorUI/components/ui-change-theme/ui-change-theme",
         "ui-parameter" : "/mp-sdk/components/ui-parameter/ui-parameter"
-    },
-    "tabBar": {
-        "color": "#aaaaaa",
-        "borderStyle": "white",
-        "backgroundColor": "#fff",
-        "selectedColor": "#0081ff",
-        "list": [
-            {
-                "pagePath": "pages/home/home",
-                "iconPath": "/static/tab_icon/document.png",
-                "selectedIconPath": "/static/tab_icon/document_cur.png",
-                "text": "文档"
-            },
-            {
-                "pagePath": "pages/template/home",
-                "iconPath": "/static/tab_icon/tpl.png",
-                "selectedIconPath": "/static/tab_icon/tpl_cur.png",
-                "text": "模板"
-            },
-            {
-                "pagePath": "pages/custom/home",
-                "iconPath": "/static/tab_icon/custom.png",
-                "selectedIconPath": "/static/tab_icon/custom_cur.png",
-                "text": "定制"
-            },
-            {
-                "pagePath": "pages/test/home",
-                "iconPath": "/static/tab_icon/test.png",
-                "selectedIconPath": "/static/tab_icon/test_cur.png",
-                "text": "实验"
-            },
-            {
-                "pagePath": "pages/my/home",
-                "iconPath": "/static/tab_icon/my.png",
-                "selectedIconPath": "/static/tab_icon/my_cur.png",
-                "text": "我的"
-            }
-        ]
     },
     "darkmode": true,
     "sitemapLocation": "sitemap.json"
