@@ -1,5 +1,8 @@
 {
     "usingComponents": {
-        "app-nav-li": "/mp-sdk/components/app-nav-li/app-nav-li"
+        "ui-form" : "/mp-cu/colorUI/components/ui-form/ui-form",
+        "ui-form-group" : "/mp-cu/colorUI/components/ui-form-group/ui-form-group",
+        "ui-input-box" : "/mp-cu/colorUI/components/ui-input-box/ui-input-box",
+        "ui-navbar": "/mp-cu/colorUI/components/ui-navbar/ui-navbar"
     }
 }

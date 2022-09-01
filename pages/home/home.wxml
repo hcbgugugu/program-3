@@ -1,4 +1,39 @@
 <!--主页-->
 <ui-sys>
-    
+<!--顶部导航栏-->
+    <ui-navbar backtext="Dong ToDoList"/>
+<!--创建便签-->
+    <form bindsubmit="tosubmit">
+    <ui-form-group required icon="cicon-mobile" type="phone">
+        <ui-input-box>
+            <input class="ui-input-wrapper" placeholder="请输入题目（必填）" name="title" value="{{inputtitle}}"/>
+        </ui-input-box>
+    </ui-form-group>
+    <ui-form-group title="备注">
+        <ui-input-box>
+            <input class="ui-input-wrapper" placeholder="请输入备注" style="height: 10vh;" name="detail" value="{{inputdetail}}"/>
+        </ui-input-box>
+    </ui-form-group>
+    <button class="ui-btn bg-orange-gradient block" form-type="submit">创建便签</button>
+    </form>
+<!--便签列表-->
+    <scroll-view scroll-y enable-flex scroll-with-animation="{{ true }}" >
+        <ui-title title="未完成{{number}}" depth="2" isIcon ui="ml-3" />
+        <view class="ui-cards goods col-goods">
+            <view class="ui-item" wx:for="{{item}}" wx:key="id" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="toProductDetail" >
+                <view class="content">
+                    <ui-radio bind:change="radioChange"><view class="text-cut text-lg text-bold">{{ item.title }}</view></ui-radio>
+                    <view class="ui-TC-3 mt-2 text-linecut-2">{{ item.detail }}</view>
+                    <view class="flex-bar mt-2">
+                        <view class="flex-bar ui-TC-3">
+                            <view class="flex-bar mx-3">
+                                <text class="cicon-info mx-2" />
+                                <text>创建于{{ item.createTime }}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>   
+        </scroll-view>
 </ui-sys>

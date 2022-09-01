@@ -44,7 +44,8 @@
         "pages/demo/avatar/avatar",
         "pages/demo/wallpaper/wallpaper",
         "pages/demo/login/login",
-        "pages/demo/set/set"
+        "pages/demo/set/set",
+        "pages/detail/index"
     ],
     "subpackages": [
         {
@@ -53,7 +54,8 @@
             "pages": [
                 "home/home"
             ]
-        }, {
+        },
+        {
             "root": "packageB",
             "name": "packTest",
             "pages": [
@@ -99,15 +101,15 @@
         "ui-tag": "/mp-cu/colorUI/components/ui-tag/ui-tag",
         "ui-progress": "/mp-cu/colorUI/components/ui-progress/ui-progress",
         "ui-tab": "/mp-cu/colorUI/components/ui-tab/ui-tab",
-        "ui-popover" : "/mp-cu/colorUI/components/ui-popover/ui-popover",
-        "ui-steps" : "/mp-cu/colorUI/components/ui-steps/ui-steps",
-        "ui-form" : "/mp-cu/colorUI/components/ui-form/ui-form",
-        "ui-form-group" : "/mp-cu/colorUI/components/ui-form-group/ui-form-group",
-        "ui-input-box" : "/mp-cu/colorUI/components/ui-input-box/ui-input-box",
-        "ui-checkbox" : "/mp-cu/colorUI/components/ui-checkbox/ui-checkbox",
-        "ui-checkbox-group" : "/mp-cu/colorUI/components/ui-checkbox-group/ui-checkbox-group",
+        "ui-popover": "/mp-cu/colorUI/components/ui-popover/ui-popover",
+        "ui-steps": "/mp-cu/colorUI/components/ui-steps/ui-steps",
+        "ui-form": "/mp-cu/colorUI/components/ui-form/ui-form",
+        "ui-form-group": "/mp-cu/colorUI/components/ui-form-group/ui-form-group",
+        "ui-input-box": "/mp-cu/colorUI/components/ui-input-box/ui-input-box",
+        "ui-checkbox": "/mp-cu/colorUI/components/ui-checkbox/ui-checkbox",
+        "ui-checkbox-group": "/mp-cu/colorUI/components/ui-checkbox-group/ui-checkbox-group",
         "ui-change-theme": "/mp-cu/colorUI/components/ui-change-theme/ui-change-theme",
-        "ui-parameter" : "/mp-sdk/components/ui-parameter/ui-parameter"
+        "ui-parameter": "/mp-sdk/components/ui-parameter/ui-parameter"
     },
     "darkmode": true,
     "sitemapLocation": "sitemap.json"

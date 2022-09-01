@@ -4,10 +4,23 @@ import { colorUISdk } from './config/mp-sdk'
 App({
     colorUI,//挂载到app上
     colorUISdk,
+    globalData:{
+        item:[],
+        number:0,
+    },
     onLaunch() {
-        //console.log(colorUISdk.isRandom.getRandom(6))
-        //console.log(colorUISdk.version)
-        //console.log(colorUISdk.numberFormat(1000000))
+        var that=this//备用
+        try {
+            var value = wx.getStorageSync('item')
+            var number=wx.getStorageSync('number')
+            console.log('reading storage:',value)
+            if (value) {
+                this.globalData.item=value
+                this.globalData.number=number
+            }
+          } catch (e) {
+            console.log('读取缓存失败:',e)
+          }
     },
     onShow() {
         
