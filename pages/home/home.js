@@ -72,11 +72,10 @@ Page({
     },
     //修改状态-----未完成=>已完成
     radioChange(e){
-        var item=e.detail.value//对应的便签
         var index=e.currentTarget.dataset.index//数组元素对应下标值
         var moved=this.data.item.splice(index,1)
         //moved.completedTime=util.formatTime(new Date())
-        //moved.completed=true
+        //moved.completed=true出问题了，moved是空的
         console.log('moved:',moved)
         this.data.diditem.push(moved)
         console.log('diditem:',this.data.diditem)
@@ -158,14 +157,16 @@ Page({
         var that=this//备用
         this.setData({
             item:app.globalData.item,
-            number:app.globalData.item,
+            number:app.globalData.number,
             diditem:app.globalData.diditem,
             num:app.globalData.num,
         })//获取全局数据
     },
-    onHide(){
+    onHide(){//小程序转到后台时自动缓存
         try {
             wx.setStorageSync('item', app.globalData.item)
+            wx.setStorageSync('diditem', app.globalData.diditem)
+            wx.setStorageSync('num', app.globalData.num)
             wx.setStorageSync('number', app.globalData.number)
           } catch (e) { }
     },
