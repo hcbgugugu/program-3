@@ -10,7 +10,7 @@ Page({
         inputtitle:'',
         inputdetail:'',
     },
-    //长按删除便签
+    //长按删除便签-----未完成
     delete(e){
         var index=e.currentTarget.dataset.index
         //_UTIL.arrRemoveObj(item,item[index])
@@ -41,6 +41,7 @@ Page({
             }
           })
     },
+    //长按删除便签------已完成
     delete1(e){
         var index=e.currentTarget.dataset.index
         console.log('delete a diditem~')
@@ -74,49 +75,50 @@ Page({
     radioChange(e){
         var index=e.currentTarget.dataset.index//数组元素对应下标值
         var moved=this.data.item.splice(index,1)
-        //moved.completedTime=util.formatTime(new Date())
-        //moved.completed=true出问题了，moved是空的
         console.log('moved:',moved)
-        this.data.diditem.push(moved)
+        console.log('value:',moved[0])
+        //this.data.item.concat(moved)
+        this.data.diditem.push(moved[0])//注意如果没有写[0]的话新数组里会还有一个数组
         console.log('diditem:',this.data.diditem)
         this.setData({
             item:this.data.item,
             diditem:this.data.diditem,
             number:this.data.item.length,
             num:this.data.diditem.length,
+        },()=>{
+            app.globalData.item=this.data.item
+            app.globalData.diditem=this.data.diditem
+            app.globalData.number=this.data.number
+            app.globalData.num=this.data.num
+            wx.setStorageSync('item', this.data.item)
+            wx.setStorageSync('diditem',this.data.diditem)
+            wx.setStorageSync('num', this.data.num)
+            wx.setStorageSync('number', this.data.number)
         })
-        app.globalData.item=this.data.item
-        app.globalData.diditem=this.data.diditem
-        app.globalData.number=this.data.number
-        app.globalData.num=this.data.num
-        wx.setStorageSync('item', this.data.item)
-        wx.setStorageSync('diditem',this.data.diditem)
-        wx.setStorageSync('num', this.data.num)
-        wx.setStorageSync('number', this.data.number)
     },
     //-----已完成=>未完成
-    radioChange(e){
+    radioChange1(e){
         var index=e.currentTarget.dataset.index//数组元素对应下标值
         var moved=this.data.diditem.splice(index,1)
-        //moved.completedTime=null
-        //moved.completed=false
         console.log('moved:',moved)
-        this.data.item.push(moved)
+        //this.data.item.concat(moved)
+        this.data.item.push(moved[0])
         console.log('item:',this.data.item)
         this.setData({
             item:this.data.item,
             diditem:this.data.diditem,
             number:this.data.item.length,
             num:this.data.diditem.length,
+        },()=>{
+            app.globalData.item=this.data.item
+            app.globalData.diditem=this.data.diditem
+            app.globalData.number=this.data.number
+            app.globalData.num=this.data.num
+            wx.setStorageSync('item', this.data.item)
+            wx.setStorageSync('diditem',this.data.diditem)
+            wx.setStorageSync('num', this.data.num)
+            wx.setStorageSync('number', this.data.number)
         })
-        app.globalData.item=this.data.item
-        app.globalData.diditem=this.data.diditem
-        app.globalData.number=this.data.number
-        app.globalData.num=this.data.num
-        wx.setStorageSync('item', this.data.item)
-        wx.setStorageSync('diditem',this.data.diditem)
-        wx.setStorageSync('num', this.data.num)
-        wx.setStorageSync('number', this.data.number)
     },
     //创建便签
     tosubmit(e){
