@@ -57,6 +57,8 @@
                                 <view class="flex-bar mx-3">
                                     <text class="cicon-info mx-2" />
                                     <text>创建于{{ item.createTime }}</text>
+                                    <text class="cicon-info mx-2" />
+                                    <text>完成于{{ item.completedTime }}</text>
                                 </view>
                             </view>
                         </view>

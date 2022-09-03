@@ -75,6 +75,7 @@ Page({
     radioChange(e){
         var index=e.currentTarget.dataset.index//数组元素对应下标值
         var moved=this.data.item.splice(index,1)
+        moved[0].completedTime=util.formatTime(new Date())
         console.log('moved:',moved)
         console.log('value:',moved[0])
         //this.data.item.concat(moved)
