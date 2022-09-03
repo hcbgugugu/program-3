@@ -4,9 +4,9 @@
     <ui-navbar backtext="Dong ToDoList"/>
 <!--创建便签-->
     <form bindsubmit="tosubmit">
-    <ui-form-group required icon="cicon-mobile" type="phone">
+    <ui-form-group title="题目">
         <ui-input-box>
-            <input class="ui-input-wrapper" placeholder="请输入题目（必填）" name="title" value="{{inputtitle}}"/>
+            <input class="ui-input-wrapper" placeholder="请输入题目" name="title" value="{{inputtitle}}"/>
         </ui-input-box>
     </ui-form-group>
     <ui-form-group title="备注">

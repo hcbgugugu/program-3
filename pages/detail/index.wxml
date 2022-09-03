@@ -3,7 +3,7 @@
     <ui-navbar back="{{true}}" back-text="返回" >
     </ui-navbar>
     <form class="ui-container" bindsubmit="modify">
-        <ui-form-group required>
+        <ui-form-group >
             <ui-input-box>
                 <input class="ui-input-wrapper" value="{{item.title}}" style="font-size: large;font-family: HeiTi;" name="title"/>
             </ui-input-box>
