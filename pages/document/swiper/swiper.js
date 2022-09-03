@@ -11,7 +11,7 @@ Page({
             },
             {
                 img: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big37006.jpg',
-                url: '/pages/custom/home',
+                url: '/pages/document/system/system',//'/pages/custom/home',
                 type: 'switchTab' //直接跳转类型
             },
             {

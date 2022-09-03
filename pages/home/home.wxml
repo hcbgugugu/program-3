@@ -18,11 +18,15 @@
     </form>
 <!--便签列表-->
     <scroll-view scroll-y enable-flex scroll-with-animation="{{ true }}" >
+    <!--未完成列表-->
         <ui-title title="未完成{{number}}" depth="2" isIcon ui="ml-3" />
         <view class="ui-cards goods col-goods">
-            <view class="ui-item" wx:for="{{item}}" wx:key="id" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="toProductDetail" >
-                <view class="content">
-                    <ui-radio bind:change="radioChange"><view class="text-cut text-lg text-bold">{{ item.title }}</view></ui-radio>
+                <view class="ui-item" wx:for="{{item}}" wx:key="id" wx:for-index="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="toProductDetail" bindlongpress="delete">
+                <view class="content" >
+                    <checkbox-group bindchange="radioChange" data-index="{{index}}" data-checks="{{item.checks}}">
+                        <checkbox data-index="{{index}}" value="{{item}}" checked="{{item.checks}}"></checkbox>
+                    </checkbox-group>
+                    <view class="text-cut text-lg text-bold">{{ item.title }}</view>
                     <view class="ui-TC-3 mt-2 text-linecut-2">{{ item.detail }}</view>
                     <view class="flex-bar mt-2">
                         <view class="flex-bar ui-TC-3">
@@ -33,7 +37,32 @@
                         </view>
                     </view>
                 </view>
+            </view>    
+        </view>
+<!--已完成列表-->
+        <ui-title title="已完成{{num}}" depth="2" isIcon ui="ml-3" />
+        <view class="ui-cards goods col-goods">
+            <view class="ui-item" wx:for="{{diditem}}" wx:key="id" wx:for-index="index" data-id="{{diditem.id}}" data-index="{{index}}" bindtap="toProductDetail1" bindlongpress="delete1">
+                <view class="content">
+                    <checkbox-group bindchange="radioChange1" data-index="{{index}}" data-checks="{{item.checks}}">
+                        <checkbox data-index="{{index}}" value="{{item}}" checked="{{item.completed}}"></checkbox>
+                    </checkbox-group>
+                    <view class="text-cut text-lg text-bold">{{ item.title }}</view>
+                    <view class="ui-TC-3 mt-2 text-linecut-2">{{ diditem.detail }}</view>
+                    <view class="flex-bar mt-2">
+                        <view class="flex-bar ui-TC-3">
+                            <view class="flex-bar mx-3">
+                                <text class="cicon-info mx-2" />
+                                <text>创建于{{ item.createTime }}</text>
+                            </view>
+                            <view class="flex-bar mx-3">
+                                <text class="cicon-info mx-2" />
+                                <text>完成于{{ item.completedTime }}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
             </view>
-        </view>   
+        </view>
         </scroll-view>
 </ui-sys>

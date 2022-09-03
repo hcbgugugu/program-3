@@ -3,13 +3,121 @@ var util=require('../../utils/util.js')
 Page({
     data: {
         item:[],
-        number:0,
         single:{
             title:'',
             detail:'',
         },
         inputtitle:'',
         inputdetail:'',
+    },
+    //长按删除便签
+    delete(e){
+        var index=e.currentTarget.dataset.index
+        //_UTIL.arrRemoveObj(item,item[index])
+        console.log('xxxxxxx')
+        var that=this
+        wx.showModal({
+            title: '确认删除？',
+            confirmColor: 'red',
+            success(res) {
+              if (res.confirm) {
+                if (index === -1) {
+                  console.error(`id ${id} 不存在`)
+                  return
+                }
+                that.data.item.splice(index,1)
+                var item=that.data.item
+                var number=that.data.item.length
+                that.setData({
+                    item,
+                    number,
+                }, () => {
+                    console.log(that.data.item)
+                    app.globalData.item=that.data.item
+                    wx.setStorageSync('item', that.data.item)
+                    wx.setStorageSync('number', that.data.number)
+                })
+              }
+            }
+          })
+    },
+    delete1(e){
+        var index=e.currentTarget.dataset.index
+        console.log('delete a diditem~')
+        var that=this
+        wx.showModal({
+            title: '确认删除？',
+            confirmColor: 'red',
+            success(res) {
+              if (res.confirm) {
+                if (index === -1) {
+                  console.error(`id ${id} 不存在`)
+                  return
+                }
+                that.data.diditem.splice(index,1)
+                var diditem=that.data.diditem
+                var num=that.data.diditem.length
+                that.setData({
+                    diditem,
+                    num,
+                }, () => {
+                    console.log(that.data.diditem)
+                    app.globalData.diditem=that.data.diditem
+                    wx.setStorageSync('diditem', that.data.diditem)
+                    wx.setStorageSync('num', that.data.num)
+                })
+              }
+            }
+          })
+    },
+    //修改状态-----未完成=>已完成
+    radioChange(e){
+        var item=e.detail.value//对应的便签
+        var index=e.currentTarget.dataset.index//数组元素对应下标值
+        var moved=this.data.item.splice(index,1)
+        //moved.completedTime=util.formatTime(new Date())
+        //moved.completed=true
+        console.log('moved:',moved)
+        this.data.diditem.push(moved)
+        console.log('diditem:',this.data.diditem)
+        this.setData({
+            item:this.data.item,
+            diditem:this.data.diditem,
+            number:this.data.item.length,
+            num:this.data.diditem.length,
+        })
+        app.globalData.item=this.data.item
+        app.globalData.diditem=this.data.diditem
+        app.globalData.number=this.data.number
+        app.globalData.num=this.data.num
+        wx.setStorageSync('item', this.data.item)
+        wx.setStorageSync('diditem',this.data.diditem)
+        wx.setStorageSync('num', this.data.num)
+        wx.setStorageSync('number', this.data.number)
+    },
+    //-----已完成=>未完成
+    radioChange(e){
+        var index=e.currentTarget.dataset.index//数组元素对应下标值
+        var moved=this.data.diditem.splice(index,1)
+        //moved.completedTime=null
+        //moved.completed=false
+        console.log('moved:',moved)
+        this.data.item.push(moved)
+        console.log('item:',this.data.item)
+        this.setData({
+            item:this.data.item,
+            diditem:this.data.diditem,
+            number:this.data.item.length,
+            num:this.data.diditem.length,
+        })
+        app.globalData.item=this.data.item
+        app.globalData.diditem=this.data.diditem
+        app.globalData.number=this.data.number
+        app.globalData.num=this.data.num
+        wx.setStorageSync('item', this.data.item)
+        wx.setStorageSync('diditem',this.data.diditem)
+        wx.setStorageSync('num', this.data.num)
+        wx.setStorageSync('number', this.data.number)
     },
     //创建便签
     tosubmit(e){
@@ -28,26 +136,38 @@ Page({
         }, () => {
           app.globalData.item = that.data.item
           app.globalData.number=that.data.number
-          try {
-            wx.setStorageSync('item', app.globalData.item)
-            wx.setStorageSync('number', app.globalData.number)
-          } catch (e) { }
         })
     },
-    //点击进入详情页
+    //点击进入详情页-----未完成
     toProductDetail(e){
         var index=e.currentTarget.dataset.index
-            var item=JSON.stringify(this.data.item)
-            wx.navigateTo({
+        var item=JSON.stringify(this.data.item)
+        wx.navigateTo({
             url: '/pages/detail/index?item='+item+'&index='+index,
-            })
+        })
+    },
+    //-----已完成
+    toProductDetail1(e){
+        var index=e.currentTarget.dataset.index
+        var diditem=JSON.stringify(this.data.diditem)
+        wx.navigateTo({
+            url: '/pages/detail1/index?diditem='+diditem+'&index='+index,
+        })
     },
     onShow(){
         var that=this//备用
         this.setData({
-            item:app.globalData.item
-            
+            item:app.globalData.item,
+            number:app.globalData.item,
+            diditem:app.globalData.diditem,
+            num:app.globalData.num,
         })//获取全局数据
+    },
+    onHide(){
+        try {
+            wx.setStorageSync('item', app.globalData.item)
+            wx.setStorageSync('number', app.globalData.number)
+          } catch (e) { }
     },
     // 监听用户滑动页面事件。
     onPageScroll(e) {

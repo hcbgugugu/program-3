@@ -27,7 +27,7 @@ export const colorUI = new ColorUI({
             title: '定制',
             icon: '/static/tab_icon/custom.png',
             curIcon: '/static/tab_icon/custom_cur.png',
-            url: '/pages/custom/home',
+            url: '',
             type: 'tab'
         },
         {
